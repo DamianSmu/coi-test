@@ -6,15 +6,21 @@ Data: 05.05.2021
 
 1.	Czym różni się obiekt od klasy?
 
+	Klasa definiuje strukturę oraz zachowanie (pola, metody) obiektu. Obiekt jest instancją klasy, czyli jej fizyczną reprezentacją posiadającą wszystkie cechy opisane przez klasę.
+
 2.	Czym różni się klasa abstrakcyjna od interfejsu?
 
+	W najnowszych wersjach języka Java interfejsy mogą zawierać metody default, statyczne oraz prywatne, zatem główną różnicą jest to, że klasy abstrakcyjne mogą przechowywać stan. Kolejną różnicą jest fakt, że klasa może dziedziczyć tylko po jednej klasie abstrakcyjnej, natomiast może implementować wiele interfejsów.
+
 3.	Proszę wyjaśnić mechanizm dziedziczenia w Javie. 
+
+	Dziedziczenie jest jednym z fundamentów programowania obiektowego. Polega ono na przekazywaniu cech klasy nadrzędnej do klasy pochodnej, umożliwiając generalizację oraz tworzenie hierarchii klas. W języku Java występuje dziedziczenie jednokrotne, to znaczy że klasa pochodna może rozszarzać tylko jedną klasę nadrzędną, a dziedziczeniu podlegają zarówno pola, jak i metody.  Klasą bazową, po której dziedziczą (niejawnie) wszystkie inne klasy jest klasa `Object`.
 
 4.	Co należy zdefiniować w klasie podrzędnej:
 		
     a.	Nic
    
-    b.	Tylko różnice między klasą podrzędną, a nadrzędną
+- [x] b. Tylko różnice między klasą podrzędną, a nadrzędną
    
     c.	Wszystko co dotyczy tej klasy
 
@@ -22,17 +28,23 @@ Data: 05.05.2021
 
     a.	W dowolnym miejscu
 
-    b.	Po deklaracji klasy, ale przed pierwszą metodą
+ - [x] b. Po deklaracji klasy, ale przed pierwszą metodą
 
     c.	Poza metodami klasy
 
 6.	Proszę omówić modyfikatory dostępu w Javie.
 
+	W Javie istnieją 4 modyfikatory dostępu:
+	* `private` dostęp do elementu tylko w obrębie klasy, w której się on znajduje.
+	* `public` swobodny dostęp do elementu z całego projektu.
+	* `protected` dostęp możliwy w tym samym pakiecie oraz we wszystkich dziedziczących klasach.
+	* modyfikator domyślny (brak modyfikatora) - dostęp możliwy tylko w tym samym pakiecie.
+
 7.	Które ze słów kluczowych powoduje przeskoczenie z bloku try do bloku finally
     
     a.	return
 
-    b.	catch
+ - [x] b.catch
     
     c.	while
 
@@ -66,19 +78,19 @@ Bramka rzuca wyjątek SMSGatewayException(„Bramka przeciążona”) w momencie
    
     a.	Tak
 
-    b.	Nie
+- [x] b.Nie
 
 14.	 Zaznaczyć metody należące do java.util.Set:
      
-    a.	addAll
+- [x] a. addAll
       
-    b.	contains 
+- [x] b. contains 
     
-    c.	isEmpty 
+- [x] c. isEmpty 
     
-    d.	size
+- [x] d. size
     
-    e.	remove
+- [x] e. remove
     
     f.	indexOf
     
@@ -111,6 +123,10 @@ zadziała dla poniższych danych
 
 W jakich przypadkach (dla innych danych wejściowych) metoda getElement może spowodować błąd i jak się przed tym zabezpieczyć?
 
+Należy sprawdzić czy zerówno `list` jak i `number` są zainicjowane, czyli nie są `null`.
+
+W przypadku gdy będziemy próbować odwołać się do ujemnego indeksu listy lub indeksu większego bądź równego wielkości listy zostanie wyrzucony wyjątek `IndexOutOfBoundsException`. Należy zatem sprawdzić przed wyywołaniem metody get() czy spełnione są powyższe warunki oraz zaimplementować działanie w przypadku gdy warunki nie są spełnione (w zależności od oczekiwanego rezultatu można zwrócić jakąś wartość domyślną, zmienić liczbę tak, aby mieściła się w przedziale wykonując operację modulo, bądź podobne).  
+
 19.	Czym różnią się poniższe zapisy i który jest preferowany oraz dlaczego:
 
 ```java
@@ -120,8 +136,27 @@ public void test(String wartosc) {
     /*3*/if (wartosc == "");
 ```
 
+Operator == porównuje referencje obiektów, a nie ich wartość, natomiast implementacja metody `equals` w klasie String porównuje ich rzeczywistą wartość. Zwrócenie wartości true przez operator == implikuje również wartość true z metody `equals` dla 2 tych samych obiektów. Z reguły nie należy porównywać typów obiektowych za pomocą operatora ==.
+
+W przypadku zapisu 1. może zostać zgłoszony `NullPointerException` gdy `wartosc` to `null`. Jest to jedyna różnica między zapisem 2.
+
+Preferowany zapis to 1. gdy chcemy, aby wyjątek był zgłaszany lub 2. gdy `wartosc` może być `null` i nie jest to błąd.
+
 20.	Co to są obiekty immutable? Czy final sprawia że obiekt jest immutable i dlaczego?
+
+	Obiekty immutable to obiekty, które po zainicjalizowaniu nie mogą zmieniać swojej wartości. Aby obiekt był immutable wszystkie jego pola muszą być prywatne i oznaczone jako final oraz nie może mieć setterów.
 
 21.	Czym różni się metoda http POST od GET?
 
+	Metoda GET z reguły służy do otrzymywania danych, a POST do ich wysyłania. Metoda POST może zawierać również `body`, gdzie zapisane są wysyłane informacja. Zgodnie z zasadami metoda GET nie powinna posiadać "skutków ubocznych" (side effects, nie powinna zmieniać stanu aplikacji/serwisu).
+
 22.	Jak powinna wyglądac sygnatura metody do której można przekazać dowolną ilość parametrów tego samego typu?
+
+```
+TypMetody metoda(TypArgumentu... argumenty) {
+	/*
+	Ciało metody
+	*/
+}
+Parametr o zmiennej liczebność musi być ostatnim parametrem metody.
+```
