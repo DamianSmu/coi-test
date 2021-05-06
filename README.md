@@ -159,9 +159,9 @@ zadziała dla poniższych danych
 
 W jakich przypadkach (dla innych danych wejściowych) metoda getElement może spowodować błąd i jak się przed tym zabezpieczyć?
 
-    Należy sprawdzić czy zerówno `list` jak i `number` są zainicjowane, czyli nie są `null`.
+Należy sprawdzić czy zerówno `list` jak i `number` są zainicjowane, czyli nie są `null`.
 
-    W przypadku gdy będziemy próbować odwołać się do ujemnego indeksu listy lub indeksu większego bądź równego wielkości listy zostanie wyrzucony wyjątek `IndexOutOfBoundsException`. Należy zatem sprawdzić przed wyywołaniem metody get() czy spełnione są powyższe warunki oraz zaimplementować działanie w przypadku gdy warunki nie są spełnione (w zależności od oczekiwanego rezultatu można zwrócić jakąś wartość domyślną, zmienić liczbę tak, aby mieściła się w przedziale wykonując operację modulo, bądź podobne).  
+W przypadku gdy będziemy próbować odwołać się do ujemnego indeksu listy lub indeksu większego bądź równego wielkości listy zostanie wyrzucony wyjątek `IndexOutOfBoundsException`. Należy zatem sprawdzić przed wyywołaniem metody get() czy spełnione są powyższe warunki oraz zaimplementować działanie w przypadku gdy warunki nie są spełnione (w zależności od oczekiwanego rezultatu można zwrócić jakąś wartość domyślną, zmienić liczbę tak, aby mieściła się w przedziale wykonując operację modulo, bądź podobne).  
 
 19.	Czym różnią się poniższe zapisy i który jest preferowany oraz dlaczego:
 
