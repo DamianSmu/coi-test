@@ -1,0 +1,120 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "BookAPI",
+    "version": "1.0",
+    "x-logo": {
+      "url": ""
+    }
+  },
+  "paths": {
+    "/api/book/isbn/{isbn}": {
+      "description": "Find book by ISBN.",
+      "get": {
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "Book.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Book not found."
+          }
+        }
+      },
+      "x-last-modified": 1620314013569,
+      "parameters": [
+        {
+          "name": "isbn",
+          "in": "path",
+          "required": true,
+          "deprecated": false,
+          "schema": {
+            "type": "string"
+          },
+          "allowEmptyValue": false,
+          "x-last-modified": 1620314154340
+        }
+      ]
+    },
+    "/api/book/title/{title}": {
+      "description": "Find book by title.",
+      "get": {
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "List of books.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Books"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Book not found."
+          }
+        }
+      },
+      "x-last-modified": 1620314013569,
+      "parameters": [
+        {
+          "name": "title",
+          "in": "path",
+          "required": true,
+          "deprecated": false,
+          "schema": {
+            "type": "string"
+          },
+          "allowEmptyValue": false,
+          "x-last-modified": 1620314154340
+        }
+      ]
+    }
+  },
+  "components": {
+    "securitySchemes": {},
+    "schemas": {
+      "Book": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "isbn": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      },
+      "Books": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Book"
+        }
+      }
+    },
+    "headers": {},
+    "responses": {},
+    "parameters": {}
+  },
+  "tags": [],
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "",
+      "variables": {},
+      "x-last-modified": 1620313982284
+    }
+  ],
+  "security": []
+}

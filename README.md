@@ -18,7 +18,7 @@ Data: 05.05.2021
 
 4.	Co należy zdefiniować w klasie podrzędnej:
 		
-    a.	Nic
+      a.	Nic
    
 - [x] b. Tylko różnice między klasą podrzędną, a nadrzędną
    
@@ -26,9 +26,9 @@ Data: 05.05.2021
 
 5.	W którym miejscu klasy można deklarować zmienne
 
-    a.	W dowolnym miejscu
+      a.	W dowolnym miejscu
 
- - [x] b. Po deklaracji klasy, ale przed pierwszą metodą
+-[x] b. Po deklaracji klasy, ale przed pierwszą metodą
 
     c.	Poza metodami klasy
 
@@ -41,14 +41,17 @@ Data: 05.05.2021
 	* modyfikator domyślny (brak modyfikatora) - dostęp możliwy tylko w tym samym pakiecie.
 
 7.	Które ze słów kluczowych powoduje przeskoczenie z bloku try do bloku finally
-    
-    a.	return
-
- - [x] b.catch
-    
+      
+      a.	return
+ 
+-[x] b.catch
+  
     c.	while
 
 8.	Mając listę `String[] drzewa = {„brzoza”, „modrzew”, „grab”, „buk”, „wierzba” }` proszę zaproponować wyświetlenie jej na ekranie za pomocą iteratora i za pomocą generyków. 
+
+    Rozwiązanie znajduje się w:
+    zadania/src/main/java/zadania/z8.java
 
 9.	Proszę zaproponować kod źródłowy metody weryfikującej czy podane 2 wyrazy składają się z tych samych liter np.
 
@@ -59,9 +62,16 @@ RAMA – składa się z 1 litery R, 2 liter A, 1 litery M
 Podane przykłady składają się z tych samych liter.
 Napisać podstawowe testy jednostkowe dla tej metody (jUnit).
 
+    Rozwiązanie znajduje się w:
+    zadania/src/main/java/zadania/z9.java
+    Testy:
+    zadania/src/test/java/Z9tests.java
+
 10.	Proszę przedstawić wysokopoziomowy diagram systemu dostępnego przez przeglądarkę internetową, przechowującego informacje o sukcesach sportowych osób znajdujących się w systemie. 
 Proszę zaproponować model logiczny bazy danych, oraz wysokopoziomowo komponenty systemu. Nie ma potrzeby schodzić na poziom kodu źródłowego.
 W sytuacji wymagającej doszczegółowienia wymagań proszę przyjąć własne założenia i opisać je.
+
+![diagram](https://octodex.github.com/smugorzd/coi-test/diagram.png)
 
 
 11.Napisać test dla poniższego fragmentu kodu.
@@ -70,15 +80,28 @@ public void wyslijSms(String numerTel, String trescSms) {
   smsGateway.send(new Sms(numerTel, trescSms));
 }
 ```
-Bramka rzuca wyjątek SMSGatewayException(„Bramka przeciążona”) w momencie, gdy jest zbyt duże obciążenie bramk.
+Bramka rzuca wyjątek SMSGatewayException(„Bramka przeciążona”) w momencie, gdy jest zbyt duże obciążenie bramki.
+
+```java
+    @Test
+    public void shouldThrowExceptionWhenGatewayOverloaded() {
+        String nrTel = "555666777";
+        String tresc = "Tresc"
+        SmsGateway smsGateway = new SmsGateway();
+        smsGateway.setOverloaded(true);
+        SmsSender smsSender = new SmsSender(smsGateway);
+        Assertions.assertThrows(SMSGatewayException.class, () -> smsSender.wyslijSms(numerTel, trescSms), "Bramka przeciążona");
+    }
+```
 
 12.	Zaprojektować kontrakt usługi REST w formacie OpenApi oraz małą aplikację springbootową, która zwraca listę książek (bez użycia bazy danych). Usługa powinna umożliwiać filtrowanie po części nazwy książki oraz po numerze IBAN.
 
-13.	Czy zbiór (Set) może zawierać duplikaty?  
-   
-    a.	Tak
+    Rozwiązanie znajduje się w katalogu zadanie12.
 
-- [x] b.Nie
+13.	Czy zbiór (Set) może zawierać duplikaty?
+       
+       a. Tak
+- [x] b. Nie
 
 14.	 Zaznaczyć metody należące do java.util.Set:
      
@@ -98,9 +121,18 @@ Bramka rzuca wyjątek SMSGatewayException(„Bramka przeciążona”) w momencie
 
 15.	Napisać zapytanie zwracające ilość praconików bez przełożonych z poniższej tabeli.
 
+    Rozwiązanie znajduje się w:
+    zadania/src/main/java/zadania/z15.sql
+
 16.	Z powyższej tabeli napisać zapytanie zwracające kwotę najmniejszego wynagrodzenia. 
 
+    Rozwiązanie znajduje się w:
+    zadania/src/main/java/zadania/z16.sql
+
 17.	Napisz fragment kodu w języku Java, który sprawdzi pełnoletność osoby. Parametrem wejściowym do obliczeń jest numer PESEL w postaci String.
+
+    Rozwiązanie znajduje się w:
+    zadania/src/main/java/zadania/z17.java
 
 18.	Poniższa metoda:
 ```java
@@ -123,9 +155,9 @@ zadziała dla poniższych danych
 
 W jakich przypadkach (dla innych danych wejściowych) metoda getElement może spowodować błąd i jak się przed tym zabezpieczyć?
 
-Należy sprawdzić czy zerówno `list` jak i `number` są zainicjowane, czyli nie są `null`.
+    Należy sprawdzić czy zerówno `list` jak i `number` są zainicjowane, czyli nie są `null`.
 
-W przypadku gdy będziemy próbować odwołać się do ujemnego indeksu listy lub indeksu większego bądź równego wielkości listy zostanie wyrzucony wyjątek `IndexOutOfBoundsException`. Należy zatem sprawdzić przed wyywołaniem metody get() czy spełnione są powyższe warunki oraz zaimplementować działanie w przypadku gdy warunki nie są spełnione (w zależności od oczekiwanego rezultatu można zwrócić jakąś wartość domyślną, zmienić liczbę tak, aby mieściła się w przedziale wykonując operację modulo, bądź podobne).  
+    W przypadku gdy będziemy próbować odwołać się do ujemnego indeksu listy lub indeksu większego bądź równego wielkości listy zostanie wyrzucony wyjątek `IndexOutOfBoundsException`. Należy zatem sprawdzić przed wyywołaniem metody get() czy spełnione są powyższe warunki oraz zaimplementować działanie w przypadku gdy warunki nie są spełnione (w zależności od oczekiwanego rezultatu można zwrócić jakąś wartość domyślną, zmienić liczbę tak, aby mieściła się w przedziale wykonując operację modulo, bądź podobne).  
 
 19.	Czym różnią się poniższe zapisy i który jest preferowany oraz dlaczego:
 
@@ -136,11 +168,11 @@ public void test(String wartosc) {
     /*3*/if (wartosc == "");
 ```
 
-Operator == porównuje referencje obiektów, a nie ich wartość, natomiast implementacja metody `equals` w klasie String porównuje ich rzeczywistą wartość. Zwrócenie wartości true przez operator == implikuje również wartość true z metody `equals` dla 2 tych samych obiektów. Z reguły nie należy porównywać typów obiektowych za pomocą operatora ==.
+    Operator == porównuje referencje obiektów, a nie ich wartość, natomiast implementacja metody `equals` w klasie String porównuje ich rzeczywistą wartość. Zwrócenie wartości true przez operator == implikuje również wartość true z metody `equals` dla 2 tych samych obiektów. Z reguły nie należy porównywać typów obiektowych za pomocą operatora ==.
 
-W przypadku zapisu 1. może zostać zgłoszony `NullPointerException` gdy `wartosc` to `null`. Jest to jedyna różnica między zapisem 2.
+    W przypadku zapisu 1. może zostać zgłoszony `NullPointerException` gdy `wartosc` to `null`. Jest to jedyna różnica między zapisem 2.
 
-Preferowany zapis to 1. gdy chcemy, aby wyjątek był zgłaszany lub 2. gdy `wartosc` może być `null` i nie jest to błąd.
+    Preferowany zapis to 1. gdy chcemy, aby wyjątek był zgłaszany lub 2. gdy `wartosc` może być `null` i nie jest to błąd.
 
 20.	Co to są obiekty immutable? Czy final sprawia że obiekt jest immutable i dlaczego?
 
