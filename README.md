@@ -28,7 +28,7 @@ Data: 05.05.2021
 
       a.	W dowolnym miejscu
 
--[x] b. Po deklaracji klasy, ale przed pierwszą metodą
+- [x] b. Po deklaracji klasy, ale przed pierwszą metodą
 
     c.	Poza metodami klasy
 
@@ -44,14 +44,16 @@ Data: 05.05.2021
       
       a.	return
  
--[x] b.catch
+- [x] b.catch
   
     c.	while
 
 8.	Mając listę `String[] drzewa = {„brzoza”, „modrzew”, „grab”, „buk”, „wierzba” }` proszę zaproponować wyświetlenie jej na ekranie za pomocą iteratora i za pomocą generyków. 
 
-    Rozwiązanie znajduje się w:
-    zadania/src/main/java/zadania/z8.java
+```
+Rozwiązanie znajduje się w:
+zadania/src/main/java/zadania/z8.java
+```
 
 9.	Proszę zaproponować kod źródłowy metody weryfikującej czy podane 2 wyrazy składają się z tych samych liter np.
 
@@ -71,7 +73,7 @@ Napisać podstawowe testy jednostkowe dla tej metody (jUnit).
 Proszę zaproponować model logiczny bazy danych, oraz wysokopoziomowo komponenty systemu. Nie ma potrzeby schodzić na poziom kodu źródłowego.
 W sytuacji wymagającej doszczegółowienia wymagań proszę przyjąć własne założenia i opisać je.
 
-![diagram](https://octodex.github.com/smugorzd/coi-test/diagram.png)
+![diagram](https://github.com/DamianSmu/coi-test/blob/main/diagram.png)
 
 
 11.Napisać test dla poniższego fragmentu kodu.
@@ -96,7 +98,9 @@ Bramka rzuca wyjątek SMSGatewayException(„Bramka przeciążona”) w momencie
 
 12.	Zaprojektować kontrakt usługi REST w formacie OpenApi oraz małą aplikację springbootową, która zwraca listę książek (bez użycia bazy danych). Usługa powinna umożliwiać filtrowanie po części nazwy książki oraz po numerze IBAN.
 
+```
     Rozwiązanie znajduje się w katalogu zadanie12.
+```
 
 13.	Czy zbiór (Set) może zawierać duplikaty?
        
@@ -121,18 +125,18 @@ Bramka rzuca wyjątek SMSGatewayException(„Bramka przeciążona”) w momencie
 
 15.	Napisać zapytanie zwracające ilość praconików bez przełożonych z poniższej tabeli.
 
-    Rozwiązanie znajduje się w:
-    zadania/src/main/java/zadania/z15.sql
+        Rozwiązanie znajduje się w:
+        zadania/src/main/java/zadania/z15.sql
 
 16.	Z powyższej tabeli napisać zapytanie zwracające kwotę najmniejszego wynagrodzenia. 
 
-    Rozwiązanie znajduje się w:
-    zadania/src/main/java/zadania/z16.sql
+        Rozwiązanie znajduje się w:
+        zadania/src/main/java/zadania/z16.sql
 
 17.	Napisz fragment kodu w języku Java, który sprawdzi pełnoletność osoby. Parametrem wejściowym do obliczeń jest numer PESEL w postaci String.
 
-    Rozwiązanie znajduje się w:
-    zadania/src/main/java/zadania/z17.java
+        Rozwiązanie znajduje się w:
+        zadania/src/main/java/zadania/z17.java
 
 18.	Poniższa metoda:
 ```java
@@ -168,19 +172,19 @@ public void test(String wartosc) {
     /*3*/if (wartosc == "");
 ```
 
-    Operator == porównuje referencje obiektów, a nie ich wartość, natomiast implementacja metody `equals` w klasie String porównuje ich rzeczywistą wartość. Zwrócenie wartości true przez operator == implikuje również wartość true z metody `equals` dla 2 tych samych obiektów. Z reguły nie należy porównywać typów obiektowych za pomocą operatora ==.
+Operator == porównuje referencje obiektów, a nie ich wartość, natomiast implementacja metody `equals` w klasie String porównuje ich rzeczywistą wartość. Zwrócenie wartości true przez operator == implikuje również wartość true z metody `equals` dla 2 tych samych obiektów. Z reguły nie należy porównywać typów obiektowych za pomocą operatora ==.
 
-    W przypadku zapisu 1. może zostać zgłoszony `NullPointerException` gdy `wartosc` to `null`. Jest to jedyna różnica między zapisem 2.
+W przypadku zapisu 1. może zostać zgłoszony `NullPointerException` gdy `wartosc` to `null`. Jest to jedyna różnica między zapisem 2.
 
-    Preferowany zapis to 1. gdy chcemy, aby wyjątek był zgłaszany lub 2. gdy `wartosc` może być `null` i nie jest to błąd.
+Preferowany zapis to 1. gdy chcemy, aby wyjątek był zgłaszany lub 2. gdy `wartosc` może być `null` i nie jest to błąd.
 
 20.	Co to są obiekty immutable? Czy final sprawia że obiekt jest immutable i dlaczego?
 
-	Obiekty immutable to obiekty, które po zainicjalizowaniu nie mogą zmieniać swojej wartości. Aby obiekt był immutable wszystkie jego pola muszą być prywatne i oznaczone jako final oraz nie może mieć setterów.
+Obiekty immutable to obiekty, które po zainicjalizowaniu nie mogą zmieniać swojej wartości. Aby obiekt był immutable wszystkie jego pola muszą być prywatne i oznaczone jako final oraz nie może mieć setterów.
 
 21.	Czym różni się metoda http POST od GET?
 
-	Metoda GET z reguły służy do otrzymywania danych, a POST do ich wysyłania. Metoda POST może zawierać również `body`, gdzie zapisane są wysyłane informacja. Zgodnie z zasadami metoda GET nie powinna posiadać "skutków ubocznych" (side effects, nie powinna zmieniać stanu aplikacji/serwisu).
+Metoda GET z reguły służy do otrzymywania danych, a POST do ich wysyłania. Metoda POST może zawierać również `body`, gdzie zapisane są wysyłane informacja. Zgodnie z zasadami metoda GET nie powinna posiadać "skutków ubocznych" (side effects, nie powinna zmieniać stanu aplikacji/serwisu).
 
 22.	Jak powinna wyglądac sygnatura metody do której można przekazać dowolną ilość parametrów tego samego typu?
 
