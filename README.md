@@ -161,6 +161,8 @@ W jakich przypadkach (dla innych danych wejściowych) metoda getElement może sp
 
 Należy sprawdzić czy zerówno `list` jak i `number` są zainicjowane, czyli nie są `null`.
 
+Konieczne jest również sprawdzenie przed rzutowaniem czy `list` jest typu `List` (instanceof).
+
 W przypadku gdy będziemy próbować odwołać się do ujemnego indeksu listy lub indeksu większego bądź równego wielkości listy zostanie wyrzucony wyjątek `IndexOutOfBoundsException`. Należy zatem sprawdzić przed wyywołaniem metody get() czy spełnione są powyższe warunki oraz zaimplementować działanie w przypadku gdy warunki nie są spełnione (w zależności od oczekiwanego rezultatu można zwrócić jakąś wartość domyślną, zmienić liczbę tak, aby mieściła się w przedziale wykonując operację modulo, bądź podobne).  
 
 19.	Czym różnią się poniższe zapisy i który jest preferowany oraz dlaczego:
